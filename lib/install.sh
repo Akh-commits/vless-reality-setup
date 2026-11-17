@@ -19,8 +19,8 @@ Documentation=https://github.com/XTLS/Xray-core
 After=network.target nss-lookup.target
 
 [Service]
-User=nobody
-Group=nogroup
+User=xray
+Group=xray
 
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_BIND_SERVICE
@@ -168,7 +168,7 @@ install_xray() {
   local script_path
   script_path="$(mktemp)"
   curl -LsS "${XRAY_INSTALL_SCRIPT_URL}" -o "${script_path}"
-  bash "${script_path}" install --version "${XRAY_VERSION}" -u root
+  bash "${script_path}" install --version "${XRAY_VERSION}"
   rm -f "${script_path}"
 }
 
