@@ -145,6 +145,16 @@ TNrPGfU3HqtfMPmmhdvrJsQng7Ck9fian4
 
 Send **only** USDT over the **Tron network** to this address; using other chains can mean lost funds.
 
+---
+
+## Acknowledgements
+
+This project is a fork of [vless-reality-setup](https://github.com/ivan-khludov/vless-reality-setup) by [Ivan Khludov](https://github.com/ivan-khludov).
+
+The original project is licensed under the [MIT License](LICENSE). The original copyright notice and license terms are preserved.
+
+This fork includes modifications, improvements, and fixes maintained by [Akh-commits](https://github.com/Akh-commits).
+
 ## License
 
 Licensed under the [MIT License](LICENSE).
