@@ -11,6 +11,10 @@ readonly XRAY_VERSION="v26.2.6"
 #   Overrides the unit installed by install-release.sh. Config is read-only; logs go to journal only (no /var/log/xray).
 #
 apply_hardened_xray_unit() {
+  if ! id xray >/dev/null 2>&1; then
+    log_error "Xray service user 'xray' does not exist."
+    return 1
+  fi
   log_info "Applying hardened systemd unit for Xray..."
   tee "${XRAY_SYSTEMD_UNIT}" >/dev/null << 'XRAY_UNIT_EOF'
 [Unit]
