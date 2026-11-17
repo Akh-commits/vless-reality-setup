@@ -92,7 +92,8 @@ require_root() {
 # Sets config file permissions so the xray process user can read it.
 #
 # @description
-#   chmod 644 on XRAY_CONFIG_PATH. Call after writing the config file.
+#   Sets config directory to root:xray 0750 and config file to root:xray 0640.
+#   Call after writing, replacing, or restoring the config file.
 #
 make_config_readable() {
   if ! id xray >/dev/null 2>&1; then
