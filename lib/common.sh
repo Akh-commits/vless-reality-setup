@@ -493,7 +493,7 @@ format_link() {
   params+="&flow=xtls-rprx-vision"
   params+="&security=reality"
   params+="&sni=${sni}"
-  params+="&fp=chrome"
+  params+="&fp=firefox"
   params+="&pbk=${public_key}"
   params+="&sid=${short_id}"
   params+="&type=tcp"
