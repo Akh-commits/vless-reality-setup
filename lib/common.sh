@@ -95,7 +95,14 @@ require_root() {
 #   chmod 644 on XRAY_CONFIG_PATH. Call after writing the config file.
 #
 make_config_readable() {
-  chmod 644 "${XRAY_CONFIG_PATH}"
+  if ! id xray >/dev/null 2>&1; then
+    log_error "Xray service user 'xray' does not exist; cannot set config permissions."
+    return 1
+  fi
+
+  install -d -o root -g xray -m 0750 "${XRAY_CONFIG_DIR}" || return 1
+  chown root:xray "${XRAY_CONFIG_PATH}" || return 1
+  chmod 0640 "${XRAY_CONFIG_PATH}" || return 1
 }
 
 #
