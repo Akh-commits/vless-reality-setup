@@ -100,7 +100,7 @@ You can restore from the menu (option 11) or manually by copying a backup over `
 
 ## Security and reliability
 
-- **Xray** runs as the unprivileged user `nobody` with minimal capabilities (`CAP_NET_BIND_SERVICE` only). A hardened systemd unit is applied at install time: strict sandboxing (`ProtectSystem`, `ProtectHome`, `PrivateTmp`, etc.), no write access outside the service runtime, and config directory read-only.
+- **Xray** runs as the dedicated unprivileged user `xray` created by the official installer, with minimal capabilities (`CAP_NET_BIND_SERVICE` only). The config directory is owned by `root:xray` with mode `0750`; `config.json` is owned by `root:xray` with mode `0640`. This allows Xray to read the config while only root can modify it. A hardened systemd unit is applied at install time: strict sandboxing (`ProtectSystem`, `ProtectHome`, `PrivateTmp`, etc.), no write access outside the service runtime, and config directory read-only.
 - **Restart policy:** `Restart=on-failure` with a short delay and a start limit so the service recovers from crashes without looping indefinitely.
 - Logs go to the system journal (`journalctl -u xray -f`); see menu option 10.
 - **Health endpoint:** A lightweight HTTP listener on port **8080** (socat + `scripts/health-responder.sh`) for monitoring. Only **GET** `http://<server>:8080/health` runs the checks below; other paths return **404**. Malformed requests may yield **400**. Service logs: `journalctl -u vless-health`.
