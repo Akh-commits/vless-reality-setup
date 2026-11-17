@@ -15,7 +15,7 @@ Installation and client management are performed entirely from the terminal in a
 Install and run the manager:
 
 ```bash
-git clone https://github.com/ivan-khludov/vless-reality-setup.git
+git clone https://github.com/Akh-commits/vless-reality-setup.git
 cd vless-reality-setup
 sudo ./bin/vless-manager.sh
 ```
